@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
+    count: this.props.value,
     imageUrl: "https://picsum.photos/200",
     tags: ["tag1", "tag2", "tag3"]
   };
@@ -35,13 +35,10 @@ class Counter extends Component {
     return (
       //React.Fragment div가 중복되지 않게 해줌.
       <React.Fragment>
-        {/* <img src={this.state.imageUrl} alt=""/> */}
         <span style={this.styles} className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
         <button onClick={ () => this.handleIncrement()} className="btn btn-secondary btn-sm">Increment</button>
-        {this.state.tags.length === 0 && "Please create a new tag!"}
-        {this.renderTags()}
       </React.Fragment>
     );
   }
